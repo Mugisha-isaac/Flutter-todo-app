@@ -32,7 +32,17 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: Center(
         child: Column(
-          children: const <Widget>[TodoCard()],
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const <Widget>[
+            TodoCard(),
+            TodoCard(),
+            TodoCard(),
+            TodoCard(),
+            TodoCard(),
+            TodoCard(),
+            TodoCard(),
+            TodoCard(),
+          ],
         ),
       ),
     );
