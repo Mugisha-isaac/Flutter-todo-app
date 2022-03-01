@@ -1,14 +1,14 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:todo/widgets/counter.dart';
 import 'package:todo/widgets/todo_cards.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,14 +33,15 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            TodoCard(),
-            TodoCard(),
-            TodoCard(),
-            TodoCard(),
-            TodoCard(),
-            TodoCard(),
-            TodoCard(),
+          children: <Widget>[
+            Counter(),
+            const TodoCard(),
+            const TodoCard(),
+            const TodoCard(),
+            const TodoCard(),
+            const TodoCard(),
+            const TodoCard(),
+            const TodoCard(),
           ],
         ),
       ),
