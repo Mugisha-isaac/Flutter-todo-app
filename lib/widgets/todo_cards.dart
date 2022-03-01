@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TodoCard extends StatelessWidget {
-  const TodoCard({Key? key}) : super(key: key);
+  final String title;
+  final bool completed;
+
+  TodoCard({required this.title, required this.completed});
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +17,15 @@ class TodoCard extends StatelessWidget {
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const <Widget>[
+              children: <Widget>[
                 Text(
-                  "Pet the Cat",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  title,
+                  style: const TextStyle(
+                      fontSize: 25, fontWeight: FontWeight.bold),
                 ),
                 Icon(
-                  Icons.check,
-                  color: Colors.green,
+                  completed ? Icons.check : Icons.close,
+                  color: completed ? Colors.green : Colors.red,
                 )
               ],
             ),

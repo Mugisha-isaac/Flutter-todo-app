@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:todo/widgets/counter.dart';
+import 'package:todo/widgets/models/todo.dart';
 import 'package:todo/widgets/todo_cards.dart';
 
 void main() {
@@ -27,6 +28,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final List<Todo> todos = [
+    Todo(id: "1ufhehhsjj", title: "Pet the Cat", completed: true),
+    Todo(id: "hhdhjjkkak", title: "Cleaning the House", completed: false),
+    Todo(id: "ncnbdhhhsj", title: "Having breakfast", completed: true)
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,13 +42,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Counter(),
-            const TodoCard(),
-            const TodoCard(),
-            const TodoCard(),
-            const TodoCard(),
-            const TodoCard(),
-            const TodoCard(),
-            const TodoCard(),
+            ...todos.map((todo) => TodoCard(
+                  title: todo.title,
+                  completed: todo.completed,
+                ))
           ],
         ),
       ),
