@@ -37,6 +37,12 @@ class _MyHomePageState extends State<MyHomePage> {
     Todo(id: const Uuid(), title: "Having breakfast", completed: true)
   ];
 
+  void _updateTodoCompletions(int index) {
+    setState(() {
+      todos[index].completed = !todos[index].completed;
+    });
+  }
+
   int _calculateTotalCompletions() {
     var totalCompletions = 0;
 
@@ -77,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             TodoList(
               todos: todos,
+              updateTodoCompletions: _updateTodoCompletions,
             )
           ],
         ),
