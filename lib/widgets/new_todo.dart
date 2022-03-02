@@ -1,16 +1,40 @@
 import 'package:flutter/material.dart';
 
 class NewTodo extends StatefulWidget {
+  final Function(String) addTodo;
+  NewTodo({required this.addTodo});
   @override
   State<StatefulWidget> createState() => _NewTodoState();
 }
 
 class _NewTodoState extends State<NewTodo> {
+  TextEditingController _todoController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: double.infinity,
-      child: Text("Hello flutter developer..!!"),
+      margin: EdgeInsets.all(10),
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            TextField(
+              controller: _todoController,
+              decoration: InputDecoration(labelText: "New Todo"),
+            ),
+            TextButton(
+                onPressed: () {
+                  widget.addTodo(_todoController.text);
+                },
+                child: const Text(
+                  "Add",
+                  style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ))
+          ]),
     );
   }
 }

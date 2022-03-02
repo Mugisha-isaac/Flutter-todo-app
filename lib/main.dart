@@ -50,8 +50,16 @@ class _MyHomePageState extends State<MyHomePage> {
     showModalBottomSheet(
         context: context,
         builder: (bCtx) {
-          return NewTodo();
+          return NewTodo(
+            addTodo: _addTodo,
+          );
         });
+  }
+
+  void _addTodo(String todo) {
+    setState(() {
+      todos.add(Todo(id: "hshajjaj", title: todo, completed: false));
+    });
   }
 
   @override
