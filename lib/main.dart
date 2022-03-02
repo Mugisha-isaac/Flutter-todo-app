@@ -5,6 +5,7 @@ import 'package:todo/widgets/counter.dart';
 import 'package:todo/widgets/models/todo.dart';
 import 'package:todo/widgets/new_todo.dart';
 import 'package:todo/widgets/todo_cards.dart';
+import 'package:todo/widgets/todo_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -73,10 +74,9 @@ class _MyHomePageState extends State<MyHomePage> {
               numberOfTodos: todos.length,
               totalCompletions: _calculateTotalCompletions(),
             ),
-            ...todos.map((todo) => TodoCard(
-                  title: todo.title,
-                  completed: todo.completed,
-                ))
+            TodoList(
+              todos: todos,
+            )
           ],
         ),
       ),
