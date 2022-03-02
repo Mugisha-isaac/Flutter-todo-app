@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo/widgets/counter.dart';
 import 'package:todo/widgets/models/todo.dart';
+import 'package:todo/widgets/new_todo.dart';
 import 'package:todo/widgets/todo_cards.dart';
 
 void main() {
@@ -34,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Todo(id: "ncnbdhhhsj", title: "Having breakfast", completed: true)
   ];
 
-  int calculateTotalCompletions() {
+  int _calculateTotalCompletions() {
     var totalCompletions = 0;
 
     todos.forEach((todo) {
@@ -43,6 +44,14 @@ class _MyHomePageState extends State<MyHomePage> {
       }
     });
     return totalCompletions;
+  }
+
+  void _showAddTodoModal(BuildContext ctx) {
+    showModalBottomSheet(
+        context: context,
+        builder: (bCtx) {
+          return NewTodo();
+        });
   }
 
   @override
@@ -54,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Counter(
               numberOfTodos: todos.length,
-              totalCompletions: calculateTotalCompletions(),
+              totalCompletions: _calculateTotalCompletions(),
             ),
             ...todos.map((todo) => TodoCard(
                   title: todo.title,
@@ -62,6 +71,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ))
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _showAddTodoModal(context);
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
