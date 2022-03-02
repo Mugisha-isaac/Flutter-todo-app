@@ -6,6 +6,7 @@ import 'package:todo/widgets/models/todo.dart';
 import 'package:todo/widgets/new_todo.dart';
 import 'package:todo/widgets/todo_cards.dart';
 import 'package:todo/widgets/todo_list.dart';
+import 'package:uuid/uuid.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,9 +32,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Todo> todos = [
-    Todo(id: "1ufhehhsjj", title: "Pet the Cat", completed: false),
-    Todo(id: "hhdhjjkkak", title: "Cleaning the House", completed: false),
-    Todo(id: "ncnbdhhhsj", title: "Having breakfast", completed: true)
+    Todo(id: const Uuid(), title: "Pet the Cat", completed: false),
+    Todo(id: const Uuid(), title: "Cleaning the House", completed: false),
+    Todo(id: const Uuid(), title: "Having breakfast", completed: true)
   ];
 
   int _calculateTotalCompletions() {
@@ -59,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _addTodo(String todo) {
     setState(() {
-      todos.add(Todo(id: "hshajjaj", title: todo, completed: false));
+      todos.add(Todo(id: Uuid(), title: todo, completed: false));
     });
   }
 
